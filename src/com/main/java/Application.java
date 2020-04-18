@@ -79,7 +79,7 @@ public class Application {
 
 		System.out.println(command);
 		List<String> commandList = new LinkedList<String>(Arrays.asList(arguments));
-		commandList.remove(0); // ditch the command piece
+		commandList.remove(0); 
 		Map<String, Object> success = cmd.executeCommand(commandList);
 		success.entrySet().stream().forEach(e -> System.out.println("\t" + e.getKey() + " " + e.getValue()));
 		return false;
