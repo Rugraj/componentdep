@@ -1,1 +1,81 @@
 # componentdep
+
+As due to time constraints I have done System Dependency application as run via console.
+
+User can input on console and get result back on console.
+
+If input is like:
+
+DEPEND   TELNET TCPIP NETCARD
+DEPEND TCPIP NETCARD
+DEPEND DNS TCPIP NETCARD
+DEPEND  BROWSER   TCPIP  HTML
+INSTALL NETCARD
+INSTALL TELNET
+INSTALL foo
+REMOVE NETCARD
+INSTALL BROWSER
+INSTALL DNS
+LIST
+REMOVE TELNET
+REMOVE NETCARD
+REMOVE DNS
+REMOVE NETCARD
+INSTALL NETCARD
+REMOVE TCPIP
+REMOVE BROWSER
+REMOVE TCPIP
+END
+
+The ouput at console will be:
+
+
+DEPEND   TELNET TCPIP NETCARD
+DEPEND TCPIP NETCARD
+DEPEND DNS TCPIP NETCARD
+DEPEND  BROWSER   TCPIP  HTML
+INSTALL NETCARD
+	NETCARD Installing
+INSTALL TELNET
+	TCPIP Installing
+	TELNET Installing
+INSTALL foo
+	foo Installing
+REMOVE NETCARD
+	NETCARD is still needed.
+INSTALL BROWSER
+	HTML Installing
+	BROWSER Installing
+INSTALL DNS
+	DNS Installing
+LIST
+	BROWSER 
+	TELNET 
+	TCPIP 
+	foo 
+	DNS 
+	HTML 
+	NETCARD 
+REMOVE TELNET
+	TELNET Removing
+	TCPIP is still needed.
+	NETCARD is still needed.
+REMOVE NETCARD
+	NETCARD is still needed.
+REMOVE DNS
+	TCPIP is still needed.
+	DNS Removing
+	NETCARD is still needed.
+REMOVE NETCARD
+	NETCARD is still needed.
+INSTALL NETCARD
+	NETCARD is already installed
+REMOVE TCPIP
+	TCPIP is still needed.
+REMOVE BROWSER
+	BROWSER Removing
+	TCPIP Removing
+	HTML Removing
+	NETCARD Removing
+REMOVE TCPIP
+	TCPIP Removing
